@@ -20,6 +20,8 @@ ARRIVAL_TYPES = (
 
 class ExpectedArrival(models.Model):
     """Модель ожидаемой приемки"""
+    kis_number = models.CharField(max_length=64, null=True)
+    kis_date = models.DateTimeField(auto_now_add=True, null=True)
     type = models.PositiveSmallIntegerField(choices=ARRIVAL_TYPES, default=0)
     contractor = models.ForeignKey(to=Contractor, verbose_name='Контрагент', on_delete=models.CASCADE,
                                    null=True, )
