@@ -10,7 +10,6 @@ class Unit(models.Model):
     name = models.CharField('Название', max_length=64)
     ratio = models.PositiveSmallIntegerField('Коэфициент', default=1)
 
-
     def __str__(self):
         return f"Unit {self.name} ({self.ratio})"
 

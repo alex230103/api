@@ -18,6 +18,7 @@ ARRIVAL_TYPES = (
     ('Внутренее перемещение', 3)
 )
 
+
 class ExpectedArrival(models.Model):
     """Модель ожидаемой приемки"""
     kis_number = models.CharField(max_length=64, null=True)
@@ -30,6 +31,7 @@ class ExpectedArrival(models.Model):
     def __str__(self):
         return f"Arrival {self.id} of {self.contractor.name}"
 
+
 class ExpectedArrivalEntry(models.Model):
     """Строка ожидаемой приемки"""
     expected_arrival = models.ForeignKey(ExpectedArrival, verbose_name='Ожидаемая Приемка',
@@ -40,10 +42,12 @@ class ExpectedArrivalEntry(models.Model):
     def __str__(self):
         return f"Expected entry {self.expected_arrival.id} {self.product.name} {self.quantity}"
 
+
 class Arrival(models.Model):
     """Модель документа прихода"""
     date = models.DateTimeField(auto_now_add=True, null=True)
     type = models.PositiveSmallIntegerField(choices=ARRIVAL_TYPES, default=0)
+
 
 class ArrivalEntry(Storage):
     """Модель строки приемки"""

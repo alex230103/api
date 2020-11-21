@@ -9,6 +9,7 @@ CONTRACTOR_TYPES = (
     ('Покупатель', 1)
 )
 
+
 class Contractor(models.Model):
     name = models.CharField(max_length=64, verbose_name='Имя')
     type = models.PositiveSmallIntegerField(choices=CONTRACTOR_TYPES, default=0)
