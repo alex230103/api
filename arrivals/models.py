@@ -47,6 +47,8 @@ class Arrival(models.Model):
     """Модель документа прихода"""
     date = models.DateTimeField(auto_now_add=True, null=True)
     type = models.PositiveSmallIntegerField(choices=ARRIVAL_TYPES, default=0)
+    expected_arrival = models.ForeignKey(ExpectedArrival, verbose_name='Ожидаемая Приемка',
+                                         on_delete=models.CASCADE, null=True)
 
 
 class ArrivalEntry(Storage):
