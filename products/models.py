@@ -32,6 +32,5 @@ class Product(models.Model):
         product.save()
         return product
 
-
     def __str__(self):
         return f"Product {self.name}"
