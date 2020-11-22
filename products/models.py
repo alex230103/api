@@ -6,7 +6,7 @@ from django.db import models
 
 class Unit(models.Model):
     """Модель еденицы хранения"""
-    product = models.ForeignKey('Product', verbose_name='Продукт', on_delete=models.CASCADE)
+    product = models.ForeignKey('Product', verbose_name='Продукт', on_delete=models.CASCADE, related_name='units')
     name = models.CharField('Название', max_length=64)
     ratio = models.PositiveSmallIntegerField('Коэфициент', default=1)
 
