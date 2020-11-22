@@ -12,7 +12,8 @@ product_retrieve = ProductAPIView.as_view({
 })
 
 product_units = ProductAPIView.as_view({
-    'get': 'product_units'
+    'get': 'product_units',
+    'post': 'create_unit'
 })
 
 urlpatterns = [

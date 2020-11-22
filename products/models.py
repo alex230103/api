@@ -32,5 +32,10 @@ class Product(models.Model):
         product.save()
         return product
 
+    def create_unit(self, **kwargs):
+        unit = self.units.get_or_create(**kwargs)
+        return unit[0]
+
+
     def __str__(self):
         return f"Product {self.name}"

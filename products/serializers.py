@@ -3,6 +3,7 @@ from .models import Product, Unit
 
 
 class UnitSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Unit
         fields = ('name', 'ratio')
