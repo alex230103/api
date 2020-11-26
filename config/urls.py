@@ -1,12 +1,12 @@
 from django.contrib import admin
 from django.urls import path, include
-
-
-patterns_api = [
-    path('products/', include('products.urls'))
-]
+from django.conf.urls import url
+from products.urls import product_router
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('products/', include('products.urls'))
+
+
 ]
+
+urlpatterns += product_router.urls

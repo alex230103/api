@@ -2,6 +2,7 @@ from rest_framework.viewsets import ModelViewSet
 from .models import Product
 from .serializers import ProductSerializer, UnitSerializer
 from rest_framework.response import Response
+from rest_framework.decorators import action
 
 class ProductAPIView(ModelViewSet):
     queryset = Product.objects.all()
@@ -14,13 +15,15 @@ class ProductAPIView(ModelViewSet):
 
         return units_actions.get(self.action, ProductSerializer)
 
-    def product_units(self, request, pk=None):
+    @action(detail=True)
+    def units(self, request, pk=None):
         product = self.get_object()
         units = product.units
         unit_serializer = UnitSerializer(units, many=True)
         return Response(unit_serializer.data)
 
 
+    @action(detail=True, methods=['POST'])
     def create_unit(self, request, pk=None):
         product = self.get_object()
         serializer = self.get_serializer_class()

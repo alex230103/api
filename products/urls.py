@@ -1,23 +1,6 @@
 from django.urls import path, include
 from .views import ProductAPIView
+from rest_framework.routers import DefaultRouter
 
-product_list = ProductAPIView.as_view({
-    'get': 'list',
-    'post': 'create'
-})
-
-product_retrieve = ProductAPIView.as_view({
-    'get': 'retrieve',
-    'put': 'update'
-})
-
-product_units = ProductAPIView.as_view({
-    'get': 'product_units',
-    'post': 'create_unit'
-})
-
-urlpatterns = [
-    path('', product_list),
-    path('<int:pk>/', product_retrieve),
-    path('<int:pk>/units/', product_units),
-]
+product_router = DefaultRouter()
+product_router.register(r'products', ProductAPIView)
