@@ -1,10 +1,10 @@
-from rest_framework.viewsets import ModelViewSet
+from config.views import Viewset
 from .models import Product
 from .serializers import ProductSerializer, UnitSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import action
 
-class ProductAPIView(ModelViewSet):
+class ProductAPIView(Viewset):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
@@ -14,7 +14,7 @@ class ProductAPIView(ModelViewSet):
         }
 
         return units_actions.get(self.action, ProductSerializer)
-
+    
     @action(detail=True)
     def units(self, request, pk=None):
         product = self.get_object()
