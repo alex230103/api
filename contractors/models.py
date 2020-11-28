@@ -5,8 +5,8 @@ from django.db import models
 """
 
 CONTRACTOR_TYPES = (
-    ('Поставщик', 0),
-    ('Покупатель', 1)
+    (0, 'Поставщик'),
+    (1, 'Покупатель')
 )
 
 

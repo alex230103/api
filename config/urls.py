@@ -1,7 +1,15 @@
 from django.contrib import admin
 from django.urls import path, include
-from products.urls import product_router
 from rest_framework.schemas import get_schema_view
+from rest_framework.routers import DefaultRouter
+
+from products.views import ProductAPIView
+from contractors.views import ContractorAPIView
+
+router = DefaultRouter()
+
+router.register(r'products', ProductAPIView)
+router.register(r'contractors', ContractorAPIView)
 
 
 urlpatterns = [
@@ -15,4 +23,4 @@ urlpatterns = [
 
 ]
 
-urlpatterns += product_router.urls
+urlpatterns += router.urls
