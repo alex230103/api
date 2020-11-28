@@ -32,10 +32,15 @@ class ExpectedArrival(models.Model):
         return f"Arrival {self.id} of {self.contractor.name}"
 
 
+    def add_entry(self, **kwargs):
+        entry = self.entry.create(**kwargs)
+        return entry
+
+
 class ExpectedArrivalEntry(models.Model):
     """Строка ожидаемой приемки"""
     expected_arrival = models.ForeignKey(ExpectedArrival, verbose_name='Ожидаемая Приемка',
-                                         on_delete=models.CASCADE, null=True)
+                                         on_delete=models.CASCADE, null=True, related_name='entry')
     product = models.ForeignKey(to=Product, verbose_name='Товар', on_delete=models.CASCADE, null=True)
     quantity = models.PositiveSmallIntegerField('Количество', default=0)
 
