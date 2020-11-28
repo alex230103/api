@@ -5,11 +5,13 @@ from rest_framework.routers import DefaultRouter
 
 from products.views import ProductAPIView
 from contractors.views import ContractorAPIView
+from arrivals.views import ExpectedArrivalAPIView
 
 router = DefaultRouter()
 
 router.register(r'products', ProductAPIView)
 router.register(r'contractors', ContractorAPIView)
+router.register(r'expected_arrivals', ExpectedArrivalAPIView)
 
 
 urlpatterns = [

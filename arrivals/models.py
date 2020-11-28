@@ -7,23 +7,23 @@ from contractors.models import Contractor
 """
 
 DOCUMENT_TYPES = (
-    ('document', 0),
-    ('cancel', 1),
+    (0, 'Документ'),
+    (1, 'Отмена'),
 )
 
 ARRIVAL_TYPES = (
-    ('Поступление товаров', 0),
-    ('Возврат поставщику', 1),
-    ('Возврат от покупателя', 2),
-    ('Внутренее перемещение', 3)
+    (0, 'Поступление товаров'),
+    (1, 'Возврат поставщику'),
+    (2, 'Возврат от покупателя'),
+    (3, 'Внутренее перемещение')
 )
 
 
 class ExpectedArrival(models.Model):
     """Модель ожидаемой приемки"""
-    kis_number = models.CharField(max_length=64, null=True)
-    kis_date = models.DateTimeField(auto_now_add=True, null=True)
-    date = models.DateTimeField(auto_now_add=True, null=True)
+    kis_number = models.CharField(max_length=64, null=True, verbose_name='Номер заявки')
+    kis_date = models.DateTimeField(null=True, verbose_name='Дата заявки')
+    date = models.DateTimeField(auto_now_add=True, null=True, verbose_name='Дата')
     type = models.PositiveSmallIntegerField(choices=ARRIVAL_TYPES, default=0)
     contractor = models.ForeignKey(to=Contractor, verbose_name='Контрагент', on_delete=models.CASCADE,
                                    null=True, )

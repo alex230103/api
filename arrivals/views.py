@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from config.views import Viewset
+from .serializers import ExpectedArrivalSrializer
+from .models import ExpectedArrival
 
-# Create your views here.
+class ExpectedArrivalAPIView(Viewset):
+    queryset = ExpectedArrival.objects.all()
+    serializer_class = ExpectedArrivalSrializer
