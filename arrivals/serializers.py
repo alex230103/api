@@ -1,10 +1,15 @@
 from rest_framework import serializers
-from .models import ExpectedArrival
+from .models import ExpectedArrival, ExpectedArrivalEntry
 
 class ExpectedArrivalSrializer(serializers.ModelSerializer):
-    date = serializers.DateTimeField(format="%d-%m-%YT%H:%M:%S")
-    kis_date = serializers.DateTimeField(format="%d-%m-%YT%H:%M:%S")
 
     class Meta:
         model = ExpectedArrival
+        fields = "__all__"
+
+
+class ExpectedArrivalEntrySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = ExpectedArrivalEntry
         fields = "__all__"

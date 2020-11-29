@@ -128,3 +128,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+REST_FRAMEWORK = {
+    'DATETIME_FORMAT': "%d.%m.%Y %H:%M:%S",
+}
