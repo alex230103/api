@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import ExpectedArrival, ExpectedArrivalEntry
+from products.serializers import ProductSerializer
 
 class ExpectedArrivalSrializer(serializers.ModelSerializer):
 
@@ -9,7 +10,9 @@ class ExpectedArrivalSrializer(serializers.ModelSerializer):
 
 
 class ExpectedArrivalEntrySerializer(serializers.ModelSerializer):
+    expected_arrival = ExpectedArrivalSrializer(read_only=True, many=False)
+    product = ProductSerializer(read_only=True, many=False)
 
     class Meta:
         model = ExpectedArrivalEntry
-        fields = "__all__"
+        fields = ("id", "expected_arrival", "product", "quantity")
