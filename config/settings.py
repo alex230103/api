@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'storage',
     'arrivals',
     'contractors',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -130,4 +131,12 @@ STATIC_URL = '/static/'
 
 REST_FRAMEWORK = {
     'DATETIME_FORMAT': "%d.%m.%Y %H:%M:%S",
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]
 }

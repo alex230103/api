@@ -6,6 +6,8 @@ from rest_framework.routers import DefaultRouter
 from products.views import ProductAPIView
 from contractors.views import ContractorAPIView
 from arrivals.views import ExpectedArrivalAPIView
+from rest_framework.authtoken.views import obtain_auth_token 
+
 
 router = DefaultRouter()
 
@@ -21,6 +23,7 @@ urlpatterns = [
         title="WMS Service",
         description="API for developers wms service"
     ), name='wms-schema'),
+    path('token-auth/', obtain_auth_token, name='api_token_auth'),  # <-- And here
 
 
 ]

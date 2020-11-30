@@ -16,7 +16,7 @@ class ExpectedArrivalAPIView(Viewset):
         return actions.get(self.action, self.serializer_class)
 
     @action(detail=True, methods=['GET'])
-    def enries(self, request, pk=None):
+    def entries(self, request, pk=None):
         arrival = self.get_object()
         entries = arrival.entry
         serializer = ExpectedArrivalEntrySerializer(entries, many=True)
